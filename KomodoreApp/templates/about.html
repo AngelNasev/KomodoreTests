@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    {% load static %}
+    <link rel="icon" href="{% static 'favicons/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'favicons/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicons/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicons/android-chrome-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'favicons/android-chrome-512x512.png' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        .blue {
+            color: #2165F6;
+        }
+    </style>
+</head>
+<body class="gray-background">
+{% include 'navbar.html' %}
+<div class="container px-5 mt-5 inter">
+    <h1 class="text-center blue pb-5">About Komodore</h1>
+    <p class="px-5">Welcome to Komodore, your trusted source for high-quality auto parts and accessories.
+        With our passion for cars and years of experience, we're dedicated to delivering top-notch products
+        and exceptional customer service to car enthusiasts and drivers alike.</p>
+    <p class="px-5">At Komodore, we understand the significance of reliable and durable auto parts for your vehicle's
+        performance and safety. Our diverse range of products includes everything from essential engine components
+        to stylish exterior accessories, all curated from reputable manufacturers.</p>
+    <p class="px-5">Our team of experts comprises avid car enthusiasts who are well-versed in the intricacies of auto parts.
+        We're committed to assisting you in finding the perfect parts that match your vehicle's specific requirements.
+        Whether you're a seasoned mechanic, a devoted car lover, or an everyday driver, we've got you covered.</p>
+    <p class="px-5">Thank you for choosing Komodore as your ultimate destination for premium auto parts. We're excited to serve
+        you and ensure your vehicle maintains peak performance.</p>
+    <p class="px-5">Contact us today with any questions or to place an order. Your satisfaction is our ultimate goal!</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+</html>

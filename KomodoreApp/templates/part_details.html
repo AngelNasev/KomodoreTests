@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Part Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    {% load static %}
+    <link rel="icon" href="{% static 'favicons/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'favicons/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicons/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicons/android-chrome-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'favicons/android-chrome-512x512.png' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        .details-box {
+            width: 1127px;
+            height: 590px;
+            flex-shrink: 0;
+            background: #F6F6F6;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+        }
+
+        .details-img {
+            width: 400px;
+            height: 400px;
+            flex-shrink: 0;
+        }
+
+        #price {
+            color: #56B280;
+        }
+
+        input#quantity {
+            border-top: #1D252C solid 1px;
+            border-bottom: #1D252C solid 1px;
+        }
+
+        .quantity-picker .quantity-input {
+            width: 25%;
+        }
+
+        .w-40 {
+            width: 40%;
+        }
+
+        button.add-to-cart {
+            text-decoration: none;
+            opacity: 1;
+            display: flex;
+            width: 286px;
+            height: 60px;
+            padding: 5px 0 5px 10px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            border-radius: 20px;
+            border: none;
+            background: #2165F6;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            color: #FFF;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        a.go-to-cart {
+            text-decoration: none;
+            opacity: 1;
+            display: flex;
+            width: 286px;
+            height: 60px;
+            padding: 5px 0 5px 10px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            border-radius: 20px;
+            border: 5px solid #2165F6;
+            background: #FFF;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            color: #2165F6;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .gray-border {
+            border-radius: 7px;
+            border: 2px solid #E6E6E6;
+        }
+
+        .characteristics {
+            color: #1D252C;
+            font-feature-settings: 'clig' off, 'liga' off;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 26px;
+        }
+
+        .description {
+            max-width: 400px;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+
+        .seller-btn {
+            text-decoration: none;
+            opacity: 1;
+            display: flex;
+            width: 143px;
+            height: 60px;
+            padding: 5px 0 5px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            border-radius: 20px;
+            border: none;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            color: #FFF;
+            background: #D9534F;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        #quantityBtn {
+            background-color: #2165F6;
+        }
+    </style>
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="container details-box mt-5 d-flex justify-content-center align-items-top gap-5">
+    <div class="inter mt-5">
+        <img src="{{part.image.url}}" class="card-img-top details-img" alt="{{part.name}}">
+        <div>
+            <p class="description text-center mt-3">{{ part.description|linebreaksbr|safe }}</p>
+        </div>
+    </div>
+    <div class="inter mt-5">
+        <h2>{{part.name}}</h2>
+        <div class="mt-3" style="width: 50%; display: inline-block;">
+            <h4 id="price">$ {{part.price|floatformat:2}}<br>
+                &nbsp;</h4>
+        </div>
+        <div class="mt-3" style="width: 40%; display: inline-block;">
+            <h4>
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <style>svg {
+                        fill: #1d252c
+                    }</style>
+                    <path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0zm0 66.8V444.8C394 378 431.1 230.1 432 141.4L256 66.8l0 0z"/>
+                </svg>
+                {{part.warranty}}
+            </h4>
+        </div>
+        {% if is_buyer %}
+        <form action="{% url 'add_to_cart' part.pk %}" method="post">
+            {% csrf_token %}
+            <div class="quantity-picker mt-3 mb-4">
+                <label for="quantity">Quantity</label><br>
+                <div class="input-group mt-1 mb-3 w-40">
+                    <button class="quantity-btn minus-btn btn btn-outline-danger" type="button">-</button>
+                    <input id="quantity" name="quantity" type="number" class="quantity-input form-control" value="1"
+                           min="1"
+                           max="{{ part.quantity }}">
+                    <button class="quantity-btn plus-btn btn btn-outline-primary" type="button">+</button>
+                </div>
+            </div>
+            <div>
+                {% if is_in_cart%}
+                <a href="/shopping_cart" class="go-to-cart">GO TO CART</a>
+                {% else %}
+                <button type="submit" class="add-to-cart">+ ADD TO CART</button>
+                {% endif %}
+            </div>
+        </form>
+        {% else %}
+        <div class="quantity-picker mt-3 mb-4">
+            <label for="quantity">Quantity</label><br>
+            <div class="input-group mt-1 mb-3 w-40">
+                <button class="quantity-btn minus-btn btn btn-outline-danger" type="button">-</button>
+                <input id="quantity-1" name="quantity" type="number" class="quantity-input form-control" value="1"
+                       min="1"
+                       max="{{ part.quantity }}">
+                <button class="quantity-btn plus-btn btn btn-outline-primary" type="button">+</button>
+            </div>
+        </div>
+        <div>
+            <div class="d-flex align-items-start justify-content-start gap-1">
+                <div>
+                    <button id="quantityBtn" class="seller-btn" type="button" data-part-id="{{part.pk}}"
+                            data-bs-toggle="modal" data-bs-target="#quantityModal">
+                        UPDATE QUANTITY
+                    </button>
+                </div>
+                <div>
+                    <form action="{% url 'remove_product' product_id=part.pk %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="seller-btn">REMOVE</button>
+                    </form>
+                </div>
+            </div>
+            <div class="modal fade" id="quantityModal" tabindex="-1" aria-labelledby="quantityModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="quantityModalLabel">Update Quantity</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <label for="newQuantity">New Quantity:</label>
+                            <input type="number" id="newQuantity" class="form-control" value="{{ part.quantity }}"
+                                   min="0">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="updateBtn">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="gray-border mt-3 px-2">
+            <p class="characteristics inter" style="max-width: 200px">{{ part.characteristics|linebreaks }}</p>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const minusBtn = document.querySelector('.minus-btn')
+        const plusBtn = document.querySelector('.plus-btn')
+
+        const updateBtn = document.getElementById('updateBtn')
+        const quantityBtn = document.getElementById('quantityBtn')
+        const newQuantityInput = document.getElementById('newQuantity')
+
+
+        minusBtn.addEventListener('click', function () {
+            const quantityInput = minusBtn.nextElementSibling
+            if (quantityInput.value > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1
+            }
+        });
+
+        plusBtn.addEventListener('click', function () {
+            const quantityInput = plusBtn.previousElementSibling
+            const maxQuantity = parseInt(quantityInput.getAttribute("max"))
+
+            if (quantityInput.value < maxQuantity) {
+                quantityInput.value = parseInt(quantityInput.value) + 1;
+            }
+        });
+
+        updateBtn.addEventListener('click', function () {
+            const newQuantity = parseInt(newQuantityInput.value)
+            const partId = quantityBtn.getAttribute('data-part-id');
+
+            $.ajax({
+                type: 'POST',
+                url: '/update_quantity/' + partId + '/',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    new_quantity: newQuantity,
+                },
+                success: function (response) {
+                    if (response.success) {
+                        $('#quantityModal').modal('hide')
+                        location.reload();
+                    } else {
+                        alert('Failed to update quantity.')
+                    }
+                },
+                error: function () {
+                    alert('An error occurred while updating quantity.')
+                }
+            });
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+</html>

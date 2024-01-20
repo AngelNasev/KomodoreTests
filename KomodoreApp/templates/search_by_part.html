@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search By Part</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    {% load static %}
+    <link rel="icon" href="{% static 'favicons/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'favicons/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicons/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicons/android-chrome-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'favicons/android-chrome-512x512.png' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        .parts-box {
+            width: 1250px;
+            height: 546px;
+            flex-shrink: 0;
+            background: #D9D9D9;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+        }
+
+        .card {
+            background-color: #D9D9D9;
+            border: none;
+        }
+        .card-title {
+            color: #2E3295;
+        }
+        .card a {
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body class="gray-background">
+{% include 'navbar.html' %}
+{% if car %}
+<div class="car-name mt-4 mx-5">
+    <h2 class="car">{{car.manufacturer}} {{car.model}} {{car.year}}</h2>
+</div>
+<div class="pt-4">
+    <div class="container parts-box" id="box-1">
+        <div class="row mx-3 px-5 py-4 d-flex align-items-center justify-content-between">
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list' category='Batteries' car_id=car.pk %}">
+                    <img src="{% static 'img/1_batteries.png' %}" class="card-img-top" alt="batteries" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Batteries</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list' category='Engine Oil' car_id=car.pk %}">
+                    <img src="{% static 'img/2_engine_oil.png' %}" class="card-img-top" alt="engine oil" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Engine Oil</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list' category='Antifreeze' car_id=car.pk %}">
+                    <img src="{% static 'img/3_antifreeze.png' %}" class="card-img-top" alt="antifreeze" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Antifreeze</h5>
+                    </div>
+                </a>
+
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list' category='Fuel Lines' car_id=car.pk %}">
+                    <img src="{% static 'img/4_fuel_lines.png' %}" class="card-img-top" alt="fuel lines" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Fuel Lines</h5>
+                    </div>
+                </a>
+
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list' category='Exhaust' car_id=car.pk %}">
+                    <img src="{% static 'img/5_exhaust.png' %}" class="card-img-top" alt="exhaust" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Exhaust</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row mx-3 px-5 py-4 d-flex align-items-center justify-content-between">
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list' category='Windshield Wipers' car_id=car.pk %}">
+                    <img src="{% static 'img/6_windshield_wipers.png' %}" class="card-img-top" alt="windshield wipers" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Windshield Wipers</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list' category='Brakes' car_id=car.pk %}">
+                    <img src="{% static 'img/7_brakes.png' %}" class="card-img-top" alt="brakes" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Brakes</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list' category='Engine Parts' car_id=car.pk %}">
+                    <img src="{% static 'img/8_engine_parts.png' %}" class="card-img-top" alt="engine parts" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Engine Parts</h5>
+                    </div>
+                </a>
+
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list' category='Tires' car_id=car.pk %}">
+                    <img src="{% static 'img/9_tires.png' %}" class="card-img-top" alt="tires" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Tires</h5>
+                    </div>
+                </a>
+
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list' category='Wheel Mountings' car_id=car.pk %}">
+                    <img src="{% static 'img/10_wheel_mounting.png' %}" class="card-img-top" alt="wheel mounting" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Wheel Mountings</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="custom">
+    <h2 class="car">&nbsp;</h2>
+</div>
+<div class="pt-4">
+    <div class="container parts-box" id="box-2">
+        <div class="row mx-3 px-5 py-4 d-flex align-items-center justify-content-between">
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list_without_car' category='Batteries' %}">
+                    <img src="{% static 'img/1_batteries.png' %}" class="card-img-top" alt="batteries" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Batteries</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list_without_car' category='Engine Oil' %}">
+                    <img src="{% static 'img/2_engine_oil.png' %}" class="card-img-top" alt="engine oil" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Engine Oil</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list_without_car' category='Antifreeze' %}">
+                    <img src="{% static 'img/3_antifreeze.png' %}" class="card-img-top" alt="antifreeze" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Antifreeze</h5>
+                    </div>
+                </a>
+
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list_without_car' category='Fuel Lines' %}">
+                    <img src="{% static 'img/4_fuel_lines.png' %}" class="card-img-top" alt="fuel lines" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Fuel Lines</h5>
+                    </div>
+                </a>
+
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list_without_car' category='Exhaust' %}">
+                    <img src="{% static 'img/5_exhaust.png' %}" class="card-img-top" alt="exhaust" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Exhaust</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row mx-3 px-5 py-4 d-flex align-items-center justify-content-between">
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list_without_car' category='Windshield Wipers' %}">
+                    <img src="{% static 'img/6_windshield_wipers.png' %}" class="card-img-top" alt="windshield wipers" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Windshield Wipers</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list_without_car' category='Brakes' %}">
+                    <img src="{% static 'img/7_brakes.png' %}" class="card-img-top" alt="brakes" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Brakes</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list_without_car' category='Engine Parts' %}">
+                    <img src="{% static 'img/8_engine_parts.png' %}" class="card-img-top" alt="engine parts" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Engine Parts</h5>
+                    </div>
+                </a>
+
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list_without_car' category='Tires' %}">
+                    <img src="{% static 'img/9_tires.png' %}" class="card-img-top" alt="tires" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Tires</h5>
+                    </div>
+                </a>
+
+            </div>
+            <div class="card" style="width: 11rem;">
+                <a href="{% url 'item_list_without_car' category='Wheel Mountings' %}">
+                    <img src="{% static 'img/10_wheel_mounting.png' %}" class="card-img-top" alt="wheel mounting" height="150"
+                         width="150">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Wheel Mountings</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+</html>

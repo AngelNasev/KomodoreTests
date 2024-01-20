@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shipping Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    {% load static %}
+    <link rel="icon" href="{% static 'favicons/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'favicons/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicons/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'favicons/android-chrome-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'favicons/android-chrome-512x512.png' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <style>
+        .shipping-box {
+            width: 811px;
+            height: 580px;
+            flex-shrink: 0;
+            background: #FFF;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+        }
+
+        button.submit-btn {
+            opacity: 1;
+            display: flex;
+            width: 286px;
+            height: 60px;
+            padding: 5px 0 5px 10px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            border-radius: 20px;
+            border: none;
+            background: #2165F6;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            color: #FFF;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            text-decoration: none;
+        }
+
+        h3.box-title {
+            color: #2165F6;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 26px;
+        }
+    </style>
+</head>
+<body class="gray-background">
+{% include 'navbar.html' %}
+<div class="pt-4 my-5 inter container shipping-box">
+    <div class="custom ms-4 pt-4">
+        <h3 class="box-title">Shipping Information</h3>
+    </div>
+    <form action="{% url 'shipping_information' order_id=order.pk %}" class="my-5 px-3" method="post">
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="form-group pt-3">
+            {{ field }}
+            {% if field.errors %}
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <button class="submit-btn mx-auto my-4" type="submit">PAYMENT OPTIONS</button>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+</html>
