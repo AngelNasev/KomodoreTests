@@ -84,7 +84,11 @@
     {% for part in parts %}
     <div class="card my-3">
         <div class="px-4">
-            <img src="{{part.image.url}}" class="card-img-top" alt="{{part.name}}">
+            {% if part.image %}
+                <img src="{{ part.image.url }}" alt="Product Image">
+            {% else %}
+                <p>No image available</p>
+            {% endif %}
         </div>
         <div class="card-body">
             <h4 class="card-title">{{part.name}}</h4>
