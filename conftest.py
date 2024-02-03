@@ -4,6 +4,7 @@ import pytest
 from PIL import Image
 from django.contrib.auth.models import User
 from pytest_factoryboy import register
+from selenium import webdriver
 
 from KomodoreApp.models import Car
 from KomodoreApp.tests.factories import CarFactory, UserFactory, ProductFactory, ProfileFactory, CartItemFactory, \
@@ -150,3 +151,12 @@ def shipping_data(db):
         "shipping_postal_code": "12345",
         "shipping_country": "Test Country"
     }
+
+
+# Selenium fixtures
+@pytest.fixture(scope="class")
+def browser(request):
+    driver = webdriver.Chrome()
+    request.cls.driver = driver
+    yield
+    driver.close()
