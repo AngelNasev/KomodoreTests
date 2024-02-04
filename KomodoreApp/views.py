@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import F, Sum
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 
 from Komodore import settings
 from KomodoreApp.forms import RegistrationForm, LoginForm, AddProductForm, ShippingInformationForm
@@ -172,6 +173,7 @@ def item_list(request, category, car_id=None):
     return render(request, "item_list.html", context=context)
 
 
+@csrf_exempt
 @login_required(login_url="/login/")
 def add(request):
     profile = Profile.objects.get(user=request.user)
@@ -222,6 +224,7 @@ def remove_product(request, product_id):
     return redirect("seller_parts")
 
 
+@csrf_exempt
 @login_required(login_url="/login/")
 def update_quantity(request, product_id):
     if request.method == 'POST':
@@ -234,6 +237,7 @@ def update_quantity(request, product_id):
     return JsonResponse({'success': False})
 
 
+@csrf_exempt
 @login_required(login_url="/login/")
 def add_to_cart(request, product_id):
     if request.method == 'POST':
@@ -248,6 +252,7 @@ def add_to_cart(request, product_id):
     return redirect(request.META.get('HTTP_REFERER', 'home'))
 
 
+@csrf_exempt
 @login_required(login_url="/login/")
 def remove_from_cart(request, cart_item_id):
     if request.method == 'POST':
@@ -333,6 +338,7 @@ def payment_method(request, order_id):
     return render(request, "payment_method.html", context=context)
 
 
+@csrf_exempt
 @login_required(login_url="/login/")
 def process_payment(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
