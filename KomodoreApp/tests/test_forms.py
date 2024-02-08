@@ -1,5 +1,4 @@
 import pytest
-from django import forms
 
 from KomodoreApp.forms import RegistrationForm, LoginForm, AddProductForm, ShippingInformationForm
 

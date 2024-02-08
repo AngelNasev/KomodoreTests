@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from Komodore import settings
 from KomodoreApp.forms import RegistrationForm, LoginForm, AddProductForm, ShippingInformationForm
-from KomodoreApp.models import Profile, Car, Product, ShoppingCart, CartItem, Order, OrderItem
+from KomodoreApp.models import Profile, Car, Product, ShoppingCart, Order
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 

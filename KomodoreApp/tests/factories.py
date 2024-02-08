@@ -17,7 +17,7 @@ class CarFactory(factory.django.DjangoModelFactory):
 
     manufacturer = fake.company()
     model = fake.word()
-    year = fake.date_between_dates(date_start=datetime(2015, 1, 1), date_end=datetime(2019, 12, 31)).year
+    year = fake.date_between_dates(date_start=datetime(2015, 1, 1), date_end=datetime(2023, 12, 31)).year
 
 
 class UserFactory(factory.django.DjangoModelFactory):

@@ -10,13 +10,10 @@ from KomodoreApp.models import Car, Product, Profile, CartItem, ShoppingCart, Or
 # Admin tests
 @pytest.mark.django_db
 def test_get_admin_user(user_factory):
-    # Create an admin user for the test
     admin_user = user_factory(username="admin", is_staff=True, is_superuser=True)
 
-    # Call the function
     result = get_admin_user()
 
-    # Assert that the returned user is the same as the one created
     assert result == admin_user
 
 
